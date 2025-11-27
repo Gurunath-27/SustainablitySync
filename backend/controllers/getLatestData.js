@@ -1,3 +1,5 @@
+
+const db = require('../config/database');
 module.exports=async (req, res, next)=> {
   try {
     const query = `

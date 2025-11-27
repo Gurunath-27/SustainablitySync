@@ -1,6 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-const db = require('../config/database');
+
 const syncData=require('./syncData')
 const normalizeData=require('./normalizeData')
 const getAllData=require('./getAllData')

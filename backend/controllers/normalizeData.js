@@ -1,4 +1,5 @@
-exports=async (sources)=> {
+
+module.exports=async (sources)=> {
   let totalInTonnes = 0;
   const processedSources = [];
 

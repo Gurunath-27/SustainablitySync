@@ -6,7 +6,7 @@ const normalizeData=require('./normalizeData')
 const getAllData=require('./getAllData')
 const getLatestData=require('./getLatestData')
 
-const dataSourcesPath = path.join(__dirname, '../../data');
+
 
 await  normalizeData(sources) 
 await syncData(req,res,next);

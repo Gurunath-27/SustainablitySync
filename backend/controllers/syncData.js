@@ -1,4 +1,9 @@
-exports=async(req, res, next) =>{
+const normalizeData=require('./normalizeData')
+const fs = require('fs');
+const path = require('path');
+const db = require('../config/database');
+const dataSourcesPath = path.join(__dirname, '../../data');
+module.exports=async(req, res, next) =>{
   try {
     const sourceA = JSON.parse(fs.readFileSync(path.join(dataSourcesPath, 'source_a.json'), 'utf8'));
     const sourceB = JSON.parse(fs.readFileSync(path.join(dataSourcesPath, 'source_b.json'), 'utf8'));
@@ -10,7 +15,7 @@ exports=async(req, res, next) =>{
       { name: 'Source C', data: sourceC }
     ];
 
-    const normalizedData = normalizeData(sources);
+    const normalizedData = await normalizeData(sources);
 
     const insertQuery = `
       INSERT INTO sustainability_data

@@ -1,0 +1,80 @@
+<div class="sync-container">
+  <div class="sync-card">
+    <div class="sync-header">
+      <h2>Sync Sustainability Data</h2>
+      <p class="description">Normalize and harmonize data from multiple sources</p>
+    </div>
+
+    <div class="sync-content">
+      <div class="info-section">
+        <h3>Data Sources</h3>
+        <div class="sources-grid">
+          <div class="source-item">
+            <div class="source-icon">📊</div>
+            <div class="source-name">Source A</div>
+            <div class="source-detail">Carbon emissions in kg</div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">📈</div>
+            <div class="source-name">Source B</div>
+            <div class="source-detail">Scope 1 emissions in tonnes</div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">📉</div>
+            <div class="source-name">Source C</div>
+            <div class="source-detail">CO2 emissions in metric tons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-section">
+        <button
+          class="sync-btn"
+          (click)="syncData()"
+          [disabled]="syncing">
+          <span *ngIf="!syncing">🔄 Sync Data</span>
+          <span *ngIf="syncing">
+            <span class="sync-spinner"></span>
+            Syncing...
+          </span>
+        </button>
+      </div>
+
+      <div class="result-section" *ngIf="syncResult">
+        <div class="success-message">
+          <div class="success-icon">✅</div>
+          <h3>{{ syncResult.message }}</h3>
+          <div class="result-details">
+            <div class="result-item">
+              <span class="label">Metric:</span>
+              <span class="value">{{ syncResult.data.metric }}</span>
+            </div>
+            <div class="result-item">
+              <span class="label">Unified Value:</span>
+              <span class="value highlight">{{ syncResult.data.value_tonnes }} tonnes</span>
+            </div>
+            <div class="result-item">
+              <span class="label">Sources Synced:</span>
+              <span class="value">{{ syncResult.data.source_count }}</span>
+            </div>
+            <div class="result-item">
+              <span class="label">Timestamp:</span>
+              <span class="value">{{ syncResult.data.timestamp | date: 'medium' }}</span>
+            </div>
+          </div>
+          <button class="dashboard-btn" (click)="navigateToDashboard()">
+            View Dashboard →
+          </button>
+        </div>
+      </div>
+
+      <div class="error-section" *ngIf="error">
+        <div class="error-box">
+          <span class="error-icon">❌</span>
+          <p>{{ error }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
